@@ -1,0 +1,115 @@
+﻿{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "CH test signing service sample",
+        "description": "Provisioning service for CH Test Signing Service",
+        "contact": {
+            "name": "Safewhere"
+        }
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "basePath": "/api",
+    "paths": {
+        "/ContextHandlerTestSigning/{thumbprint}": {
+            "post": {
+                "tags": [
+                    "ContextHandlerTestSigning"
+                ],
+                "summary" : "Test the SAML token",
+                "description": "This is a test signing service that can be called by a user facing system, with a previously issued SAML assertion as input,\r\n            and the test signing service must then reply with an updated version of the SAML assertion.",
+                "operationId": "ContextHandlerTestSigning_Post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "message",
+                        "in": "body",
+                        "description": "The SAML assertion token",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "thumbprint",
+                        "in": "path",
+                        "description": "The thumbprint of signing certificate",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "400": {
+                        "description": "Invalid data supplied",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Unknown id",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "409": {
+                        "description": "Conflicting request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected server error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "503": {
+                        "description": "Unavailable",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

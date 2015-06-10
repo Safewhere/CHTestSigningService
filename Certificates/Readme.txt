@@ -1,0 +1,3 @@
+CertificateIdp.p12 is used by CHTestSigningService
+password is Test1234
+thumbprint is CA95B2F383BEF8144500CD74B88BC42CD3DE936C
