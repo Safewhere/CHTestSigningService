@@ -19,7 +19,7 @@ To use this sample do the following:
 1. Either clone the repository <https://github.com/Safewhere/CHTestSigningService.git> to `C:\CHTestSigningService`, or unpack the provided zip-file `CHTestSigningService.zip` to `C:\CHTestSigningService`.
 2. Open `C:\CHTestSigningService\Kombit.Samples.CHTestSigningService.sln` in Visual Studio, and build the solution.
 3. Make sure an SSL certificate that covers the DNS name `chtestsigningservice.projekt-stoettesystemerne.dk` is present in `LocalMachine\My` certificate store.
-4. Open the Hosts-file, and map the DNS name `chtestsigningservice.projekt-stoettesystemerne.dk` to localhost.
+4. Open the Hosts-file, and map the DNS name `chtestsigningservice.projekt-stoettesystemerne.dk` to `127.0.0.1`.
 5. Create a new IIS web application:
 	1. The `Site name` should be `chtestsigningservice.projekt-stoettesystemerne.dk`
 	2. The `Physical path`should be `C:\CHTestSigningService\Kombit.Samples.CHTestSigningService`
@@ -31,7 +31,9 @@ To use this sample do the following:
 8. Assign the application pool identity for the web application read permissions to the private key for the certificate imported in the previous step.
 9. Open a browser and point it to <https://chtestsigningservice.projekt-stoettesystemerne.dk>
 
-## <a name=“configuration”></a>Configuration ParametersA few properties in the configuration file, web.config, for CHTestSigningService may need to be updated:We will need to make changes to the C:\inetpub\CHTestSigningService\web.config file:* `SigningCertificateThumbprint` The thumbprint of a certificate with private key that is used to sign the updated token. The certificate must exist in `LocalMachine\My`.
+## <a name=“configuration”></a>Configuration ParametersA few properties in the configuration file, web.config, for CHTestSigningService may need to be updated. The configuration file is located in `C:\CHTestSigningService\Kombit.Samples.CHTestSigningService\web.config`.
+
+The following parameters can be changed:* `SigningCertificateThumbprint` The thumbprint of a certificate with private key that is used to sign the updated token. The certificate must exist in `LocalMachine\My`.
 * `serilog:minimum-level` Specifies the level of logging.  Log files are stored in the `Logs\` folder.
 * `owin:AutomaticAppStartup` Tell the application that it should use OWIN middleware when hosting under IIS. This setting should be true.
 
