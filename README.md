@@ -1,6 +1,8 @@
 # CHTestSigningService
 Context Handler Test Signing Service
 
+Document reference: D.03.08.00003
+
 ## <a name=“introduction”></a>Introduction
 The following document describes how to configure the Context Handler (CH) Test Signing Service. After completing this guide, the CH Test Signing Service will be configured.
 
